@@ -19,9 +19,9 @@ from skimage.feature import hog
 class FeatureExtraction():
     
     def __init__(self, params):
-        self.size = params["SPATIAL_SIZE"]
+        self.size = (params["SPATIAL_SIZE"][0], params["SPATIAL_SIZE"][1])
         self.hist_bins = params["HIST_BINS"]
-        self.hist_range = params["HIST_RANGE"]
+        self.hist_range = (params["HIST_RANGE"][0], params["HIST_RANGE"][1])
         self.cspace = params["COLOR_SPACE"]
         self.orient = params["ORIENT"]
         self.pix_per_cell = params["PIX_PER_CELL"]

@@ -21,9 +21,9 @@ class Slider():
     
     def __init__(self, FeatureEng, search_params):
         self.FE = FeatureEng
-        self.xy_window = search_params["xy_window"]
+        self.xy_window = (search_params["xy_window"][0], search_params["xy_window"][1]) 
         self.window_sizes = search_params["window_sizes"]
-        self.xy_overlap = search_params["xy_overlap"]
+        self.xy_overlap = (search_params["xy_overlap"][0], search_params["xy_overlap"][1]) 
         self.x_start_stop = search_params["x_start_stop"]
         self.y_start_stop = search_params["y_start_stop"]
         
@@ -103,8 +103,7 @@ class Slider():
         return on_windows
     
     
-    def run(self, img, clf, scaler,
-            x_start_stop=[None, None], y_start_stop = [360, 700], xy_window=(64, 64), xy_overlap = (0.85, 0.85)):
+    def run(self, img, clf, scaler, x_start_stop=[None, None], y_start_stop = [360, 700], xy_window=(64, 64), xy_overlap = (0.85, 0.85)):
         
         windows = self.slide_window(img, y_start_stop=y_start_stop, xy_window=xy_window, xy_overlap=xy_overlap)
         on_windows = self.search_windows(img, windows, clf, scaler)
@@ -112,8 +111,7 @@ class Slider():
         return on_windows, img_withboxes
     
     
-    def run_new(self, img, clf, scaler,
-                window_sizes, x_start_stop=[None, None], y_start_stop = [360, 700], xy_overlap = (0.85, 0.85)):
+    def run_new(self, img, clf, scaler, window_sizes, x_start_stop=[None, None], y_start_stop = [360, 700], xy_overlap = (0.85, 0.85)):
         windows = []
         for window_size in window_sizes:
             xy_window = (window_size, window_size)

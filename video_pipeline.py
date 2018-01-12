@@ -9,10 +9,12 @@ import os
 import sys
 import glob
 import cv2
+import json
 import time
 from tqdm import tqdm
 import pandas as pd
 import numpy as np
+from moviepy.editor import VideoFileClip
 
 from skimage.feature import hog
 from sklearn.preprocessing import StandardScaler
@@ -20,13 +22,23 @@ from sklearn.svm import LinearSVC, SVC
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.model_selection import train_test_split, GridSearchCV
 
+from feature_engineering import FeatureEngineering
+from slider import Slider
+from heater import Heater
+from visualization import Visualize
+
 input_file, output_file = str(sys.argv[1]), str(sys.argv[2])
 
 print("Current input file: " , input_file)
 print("Current output file: " , output_file)
 
-project_path = os.path.join(os.getcwd())
-data_path = os.path.join(project_path, "data")
+data_path = os.path.join(os.getcwd(), "data")
+config_path = os.path.join(os.getcwd(), "config")
+
+with open(os.path.join(config_path, 'config.json')) as json_data_file:
+	config_data = json.load(json_data_file)
+	params = config_data["feature"]
+	search_params = config_data["search"]
 
 
 
@@ -82,7 +94,6 @@ class Train():
 		rf, accuracy_rf = self.train_model(X_train, X_test, y_train, y_test, rf_raw)
 		print("Accuracy of model : ", accuracy_rf)
 		return rf, X_scaler
-
 
 
 
