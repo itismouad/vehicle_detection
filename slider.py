@@ -13,14 +13,15 @@ import time
 from tqdm import tqdm
 import pandas as pd
 import numpy as np
-
 from skimage.feature import hog
+
+from feature_engineering import FeatureExtraction
 
 
 class Slider():
     
-    def __init__(self, FeatureEng, search_params):
-        self.FE = FeatureEng
+    def __init__(self, FeatureExtraction, search_params):
+        self.FE = FeatureExtraction
         self.xy_window = (search_params["xy_window"][0], search_params["xy_window"][1]) 
         self.window_sizes = search_params["window_sizes"]
         self.xy_overlap = (search_params["xy_overlap"][0], search_params["xy_overlap"][1]) 
@@ -122,9 +123,9 @@ class Slider():
 
 
 
-    def run_efficient(img, clf, scaler, y_start_stop=[350, 656], window=64, cells_per_step=1, scale=1.5):
+    def run_efficient(self, img, clf, scaler, y_start_stop=[350, 656], window=64, cells_per_step=1, scale=1.5):
 
-	    feature_image = self.FE.convert_img(img, color_space=FE.cspace)
+	    feature_image = self.FE.convert_img(img, color_space=self.FE.cspace)
 	    
 	    ystart, ystop = y_start_stop
 	    ctrans_tosearch = feature_image[ystart:ystop,:,:]
