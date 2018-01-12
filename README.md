@@ -1,4 +1,4 @@
-# Advanced Lane Finding
+# Vehicle Detection and Tracking
 
 ## Task
 
@@ -22,6 +22,8 @@ The steps of this project are the following:
 `video_pipeline.py path_to_input_video path_to_output_video`
 
 Input video needs to be a feed from centered onboard camera.
+
+NB: You will need to download the training data ([vehicle](https://s3.amazonaws.com/udacity-sdc/Vehicle_Tracking/vehicles.zip) and [non-vehicle(https://s3.amazonaws.com/udacity-sdc/Vehicle_Tracking/non-vehicles.zip) images) and put in a folder named `data`. It has been ignored for sizing issues.
 
 ## Example
 
