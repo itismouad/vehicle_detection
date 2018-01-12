@@ -104,7 +104,6 @@ class Slider():
     
     
     def run(self, img, clf, scaler, x_start_stop=[None, None], y_start_stop = [360, 700], xy_window=(64, 64), xy_overlap = (0.85, 0.85)):
-        
         windows = self.slide_window(img, y_start_stop=y_start_stop, xy_window=xy_window, xy_overlap=xy_overlap)
         on_windows = self.search_windows(img, windows, clf, scaler)
         img_withboxes = self.draw_boxes(img.copy(), on_windows)

@@ -20,7 +20,7 @@ import matplotlib.image as mpimg
 class Visualize():
 
 	def compare_images(self, two_images, two_labels, figsize=(10, 10)):
-    
+
 	    fig, axes = plt.subplots(ncols=2, figsize=figsize)
 	    axes[0].imshow(two_images[0])
 	    axes[0].set_title(two_labels[0])
@@ -66,6 +66,7 @@ class Visualize():
 
 
 	def plot_hist(self, channel1_hist, channel2_hist, channel3_hist, bin_centers, figsize=(15, 5)):
+		
 	    fig = plt.figure(figsize=figsize)
 	    plt.subplot(131)
 	    plt.bar(bin_centers, channel1_hist[0])

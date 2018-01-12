@@ -64,6 +64,7 @@ class FeatureExtraction():
         return channel1_hist, channel2_hist, channel3_hist, bin_centers, hist_features
     
     
+    
     def get_hog_features(self, img, orient=None, pix_per_cell=None, cell_per_block=None, vis=False, feature_vec=True):
         
         orient = self.orient if orient is None else orient
@@ -82,6 +83,7 @@ class FeatureExtraction():
                            cells_per_block=(cell_per_block, cell_per_block), transform_sqrt=True, 
                            visualise=vis, feature_vector=feature_vec)
             return features
+
         
     def extract_features(self, img):
         
