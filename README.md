@@ -14,7 +14,7 @@ The steps of this project are the following:
 
 * Build a feature engineering pipeline to create a dependent variable for our classification model.
 * Train a classifier using the selected features (HOG features and color features in our case).
-* Implement a sliding window search.
+* Implement a sliding window search and use the trained classifier to search for vehicles in images
 * Create a video pipeline that create bounding boxes and identify vehicles most of the time with minimal false positives.
 
 ## Usage
