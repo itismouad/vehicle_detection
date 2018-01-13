@@ -15,11 +15,6 @@
 [test_images_tosearch_boxed]: ./output_images/test_images_tosearch_boxed.png "test_images_tosearch_boxed"
 [test_images_tosearch_hot]: ./output_images/test_images_tosearch_hot.png "test_images_tosearch_hot"
 [test_images_tosearch_unique]: ./output_images/test_images_tosearch_unique.png "test_images_tosearch_unique"
-[]: ./output_images/.png ""
-[]: ./output_images/.png ""
-[]: ./output_images/.png ""
-[]: ./output_images/.png ""
-[]: ./output_images/.png ""
 
 
 
@@ -223,11 +218,11 @@ The heatmap strategy works well to control for the noise in our images. The last
 
 ![alt text][test_images_tosearch_unique]
 
-**NB** : The performance of the method calculating HOG on each particular window was slow. To improve the processing performance, a HOG sub-sampling was implemented with the `run_efficient` function [here](https://github.com/itismouad/vehicle_detection/blob/master/slider.py)
+**NB** : The performance of the method calculating HOG on each particular window was slow. To improve the processing performance, a HOG sub-sampling was implemented with the `run_efficient` function [here](https://github.com/itismouad/vehicle_detection/blob/master/slider.py).
 
 ![alt text][compare_start_end]
 
-The image above was displayed thanks to the **videoPipeline()** python class located in [video_pipeline.py](https://github.com/itismouad/vehicle_detection/blob/master/video_pipeline.py) (see `process_image` and `run`).
+The image above was displayed thanks to the **videoPipeline()** python class located in [video_pipeline.py](https://github.com/itismouad/vehicle_detection/blob/master/video_pipeline.py) (see `process_image` and `run` functions).
 
 
 ## Pipeline (video)
