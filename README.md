@@ -6,7 +6,7 @@ Identification and tracking of vehicles.
 
 ```
 conda env create -f environment.yml
-source activate environment.yml
+source activate environment
 ```
 
 ## Usage
@@ -29,7 +29,9 @@ NB:
 
 ## Example
 
-```python video_pipeline.py ../videos/project_video.mp4 ../videos/project_video_output.mp4```
+```
+python video_pipeline.py ../videos/project_video.mp4 ../videos/project_video_output.mp4
+```
 
 ![alt text][compare_start_end]
 
