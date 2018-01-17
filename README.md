@@ -2,17 +2,34 @@
 
 Identification and tracking of vehicles.
 
+## Installation
+
+```
+conda env create -f environment.yml
+source activate environment.yml
+```
+
 ## Usage
 
-`video_pipeline.py path_to_input_video path_to_output_video`
+```
+ Usage:
+  video_pipeline.py [-i <file>] [-o <file>]
+  video_pipeline.py -h | --help
 
-Input video needs to be a feed from centered onboard camera.
+Options:
+  -h --help
+  -i <file> --input <file>   Input text file [default: ../videos/project_video.mp4]
+  -o <file> --output <file>  Output generated file [default: ../videos/project_video_output.mp4]
+```
 
-NB: You will need to download the training data ([vehicle](https://s3.amazonaws.com/udacity-sdc/Vehicle_Tracking/vehicles.zip) and [non-vehicle](https://s3.amazonaws.com/udacity-sdc/Vehicle_Tracking/non-vehicles.zip) images) and put in a folder named `data`. It has been ignored for sizing issues.
+
+NB:
+* Input video needs to be a feed from centered onboard camera.
+* You will need to download the training data ([vehicle](https://s3.amazonaws.com/udacity-sdc/Vehicle_Tracking/vehicles.zip) and [non-vehicle](https://s3.amazonaws.com/udacity-sdc/Vehicle_Tracking/non-vehicles.zip) images) and put in a folder named `data`. It has been ignored for sizing issues.
 
 ## Example
 
-`python video_pipeline.py ../videos/project_video.mp4 ../videos/project_video_output.mp4`
+```python video_pipeline.py ../videos/project_video.mp4 ../videos/project_video_output.mp4```
 
 ![alt text][compare_start_end]
 

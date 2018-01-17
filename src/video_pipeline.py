@@ -1,20 +1,30 @@
 # -*- coding: utf-8 -*-
 # encoding=utf8
 
-"""
- Written by Mouad Hadji (@itismouad)
+
+"""Identification and tracking of vehicles. Written by Mouad Hadji (@itismouad)
+
+ Usage:
+  video_pipeline.py [-i <file>] [-o <file>]
+  video_pipeline.py -h | --help
+
+Options:
+  -h --help
+  -i <file> --input <file>   Input text file [default: ../videos/project_video.mp4]
+  -o <file> --output <file>  Output generated file [default: ../videos/project_video_output.mp4]
+
 """
 
-import os
-import sys
+import os, sys
 import glob
 import cv2
 import json
 import time
+from docopt import docopt
 from tqdm import tqdm
+from moviepy.editor import VideoFileClip
 import pandas as pd
 import numpy as np
-from moviepy.editor import VideoFileClip
 
 from skimage.feature import hog
 from sklearn.preprocessing import StandardScaler
@@ -26,20 +36,6 @@ from feature_engineering import FeatureExtraction
 from slider import Slider
 from heater import Heater
 from visualization import Visualize
-
-input_file, output_file = str(sys.argv[1]), str(sys.argv[2])
-
-print("Current input file: " , input_file)
-print("Current output file: " , output_file)
-
-data_path = "../data"
-config_path = "../config"
-
-with open(os.path.join(config_path, 'config.json')) as json_data_file:
-    config_data = json.load(json_data_file)
-    params = config_data["feature"]
-    search_params = config_data["search"]
-
 
 
 class Train():
@@ -123,6 +119,19 @@ class videoPipeline():
 
 
 if __name__ == "__main__":
+
+    parameters = docopt(__doc__)
+    input_file, output_file = parameters['--input'], parameters['--output']
+    print("Current input file: " , input_file)
+    print("Current output file: " , output_file)
+
+    data_path = "../data"
+    config_path = "../config"
+
+    with open(os.path.join(config_path, 'config.json')) as json_data_file:
+        config_data = json.load(json_data_file)
+        params = config_data["feature"]
+        search_params = config_data["search"]
 
     vP = videoPipeline(data_path, params, search_params, threshold=4)
     vP.run(input_file, output_file)
