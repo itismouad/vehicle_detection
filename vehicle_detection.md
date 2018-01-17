@@ -22,7 +22,7 @@
 
 In this project, my main goal is to write a software pipeline to **identify and track vehicles** in a video from a front-facing camera on a car (without any false positives).
 
-You will find the exploration code for this project is in the [IPython Notebook](https://github.com/itismouad/vehicle_detection/blob/master/Vehicle%20Detection%20and%20Tracking.ipynb) and a [video](https://github.com/itismouad/vehicle_detection/blob/master/project_video_output.mp4) displaying how my pipeline can allow to detect and track vehicles on the road.
+You will find the exploration code for this project is in the [IPython Notebook](https://github.com/itismouad/vehicle_detection/blob/master/notebooks/Vehicle%20Detection%20and%20Tracking.ipynb) and a [video](https://github.com/itismouad/vehicle_detection/blob/master/videos/project_video_output.mp4) displaying how my pipeline can allow to detect and track vehicles on the road.
 
 ![alt text][compare_start_end]
 
@@ -36,7 +36,7 @@ For this purpose, I will aim at achieving the following steps :
 
 ## Feature Engineering
 
-* code : [feature_engineering.py](https://github.com/itismouad/vehicle_detection/blob/master/feature_engineering.py)
+* code : [feature_engineering.py](https://github.com/itismouad/vehicle_detection/blob/master/src/feature_engineering.py)
 * name of the python class :  **FeatureExtraction()**
 
 The images I receive as an input are coming from the forward facing camera. The main goal of this software pipeline is to detect vehicles hence we need to build a feature vectors that will allow to perform this task. There are many features that we can consider extracting from an image.
@@ -177,7 +177,7 @@ In the end we **concatenate all those features** to create our final feature vec
 
 ## Train a classifier
 
-* code : [video_pipeline.py](https://github.com/itismouad/vehicle_detection/blob/master/video_pipeline.py)
+* code : [video_pipeline.py](https://github.com/itismouad/vehicle_detection/blob/master/src/video_pipeline.py)
 * name of the python class :  **Train()**
 
 Now that we have our training dataset, we can start to train our classifier. We first normalize our vectors and train both SVM and random forest classifiers. 
@@ -192,7 +192,7 @@ Accuracies are extremely high. We will use the random forest moving forward.
 
 ## Implement a sliding window search.
 
-* code : [slider.py](https://github.com/itismouad/vehicle_detection/blob/master/slider.py)
+* code : [slider.py](https://github.com/itismouad/vehicle_detection/blob/master/src/slider.py)
 * name of the python class :  **Slider()**
 
 Now that the classifier can identify if an image is a car, we need to be able to search through the whole image for potential car matches. For this purpose we implement a sliding window search that will be an input to our classifier.
@@ -207,7 +207,7 @@ Test images after running each of the windows through a classifier, we are able 
 
 #### Heatmap creation
 
-* code : [heater.py](https://github.com/itismouad/vehicle_detection/blob/master/heater.py)
+* code : [heater.py](https://github.com/itismouad/vehicle_detection/blob/master/src/heater.py)
 * name of the python class :  **Heater()**
 
 Now, to avoid false positives we can create a heatmap and apply a threshold of posiive predictions to make sure we are identifying a car :
@@ -218,19 +218,19 @@ The heatmap strategy works well to control for the noise in our images. The last
 
 ![alt text][test_images_tosearch_unique]
 
-**NB** : The performance of the method calculating HOG on each particular window was slow. To improve the processing performance, a HOG sub-sampling was implemented with the `run_efficient` function [here](https://github.com/itismouad/vehicle_detection/blob/master/slider.py).
+**NB** : The performance of the method calculating HOG on each particular window was slow. To improve the processing performance, a HOG sub-sampling was implemented with the `run_efficient` function [here](https://github.com/itismouad/vehicle_detection/blob/master/src/slider.py).
 
 ![alt text][compare_start_end]
 
-The image above was displayed thanks to the **videoPipeline()** python class located in [video_pipeline.py](https://github.com/itismouad/vehicle_detection/blob/master/video_pipeline.py) (see `process_image` and `run` functions).
+The image above was displayed thanks to the **videoPipeline()** python class located in [video_pipeline.py](https://github.com/itismouad/vehicle_detection/blob/master/src/video_pipeline.py) (see `process_image` and `run` functions).
 
 
 ## Pipeline (video)
 
-* code : [video_pipeline.py](https://github.com/itismouad/vehicle_detection/blob/master/video_pipeline.py)
+* code : [video_pipeline.py](https://github.com/itismouad/vehicle_detection/blob/master/src/video_pipeline.py)
 * name of the python class :  **videoPipeline()**
 
-The final video can be found here : [project_video_output.mp4](https://github.com/itismouad/vehicle_detection/blob/master/project_video_output.mp4). There are some glitches in the current pipeline but overall, it has a strong performance.
+The final video can be found here : [project_video_output.mp4](https://github.com/itismouad/vehicle_detection/blob/master/videos/project_video_output.mp4). There are some glitches in the current pipeline but overall, it has a strong performance.
 
 
 ## Discussion
