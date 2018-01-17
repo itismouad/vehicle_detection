@@ -30,7 +30,7 @@ NB:
 ## Example
 
 ```
-python video_pipeline.py ../videos/project_video.mp4 ../videos/project_video_output.mp4
+python video_pipeline.py-i ../videos/project_video.mp4 -o ../videos/project_video_output.mp4
 ```
 
 ![alt text][compare_start_end]
